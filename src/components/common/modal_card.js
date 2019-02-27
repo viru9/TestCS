@@ -11,6 +11,7 @@ const CardModel = (props) => {
       <h5 className="card-title">{props.name}</h5>
       <h6 className="card-title">{props.dob}</h6>
       <p className="card-text">{props.description}</p>
+      <h6 className="card-title">{props.location}</h6>
       <h6 className="card-title">{props.phone}</h6>
       <h6 className="card-title">{props.email}</h6>
       </div>

@@ -45,7 +45,7 @@ class Home extends Component {
     let new_arr = [];
 
     _.map(this.props.home_page.home, data => {
-      if(data.NAME.includes(val) || data.LOCATION.includes(val)){
+      if(data.NAME.toLowerCase().includes(val) || data.LOCATION.toLowerCase().includes(val)){
         new_arr.push(data);
       }
 
