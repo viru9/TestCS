@@ -1,18 +1,29 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchHomeValues} from '../actions/home';
+import {fetchHomeValues,filterSearchedHomeValues} from '../actions/home';
 import ModalCards from './common/modal_card';
 import _ from 'lodash';
 
-
 class Home extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      card_data:[]
+    }
+  }
 
   componentDidMount(){
     this.props.fetchHomeValues();
   }
 
+  componentWillReceiveProps(nextProps){
+    this.setState({card_data:nextProps.home_page.home});
+  }
+
   renderUserCards(){
-    return _.map(this.props.home.home.response, data => {
+
+    return _.map(this.state.card_data, data => {
       return (
         <ModalCards
         key={data.NAME}
@@ -28,9 +39,30 @@ class Home extends Component {
     });
   }
 
+  updateSearch(e){
+
+    let val = e.target.value;
+    let new_arr = [];
+
+    _.map(this.props.home_page.home, data => {
+      if(data.NAME.includes(val) || data.LOCATION.includes(val)){
+        new_arr.push(data);
+      }
+
+  });
+
+  this.setState({card_data:new_arr});
+
+  }
+
   render() {
     return (
       <div className="container">
+
+      <input type="text"
+                onChange={this.updateSearch.bind(this)}
+              />
+
       <div className="row">
         {this.renderUserCards()}
       </div>
@@ -40,7 +72,7 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
-  return {home: state};
+  return {home_page: state};
 }
 
-export default connect(mapStateToProps, {fetchHomeValues})(Home);
+export default connect(mapStateToProps, {fetchHomeValues,filterSearchedHomeValues})(Home);
