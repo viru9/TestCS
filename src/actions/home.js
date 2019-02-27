@@ -2,8 +2,6 @@ import axios from 'axios';
 import {ROOT_BASE_URL} from './../common/common';
 
 export const FETCH_HOME_VALUES = 'fetch_home_values';
-export const FILTER_HOME_VALUES = 'filter_home_values';
-
 const FETCH_HOME_VALUE = 'todos';
 
 export function fetchHomeValues(){
@@ -14,15 +12,5 @@ export function fetchHomeValues(){
             dispatch({type: FETCH_HOME_VALUES, payload: request});
           }
         });
-      };
-}
-
-export function filterSearchedHomeValues(value){
-
-  console.log('filterSearchedHomeValues<<: ',value);
-
-      return (dispatch) => {
-            dispatch({type: FILTER_HOME_VALUES, payload: value});
-
       };
 }

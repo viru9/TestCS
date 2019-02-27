@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchHomeValues,filterSearchedHomeValues} from '../actions/home';
+import {fetchHomeValues} from '../actions/home';
 import ModalCards from './common/modal_card';
 import _ from 'lodash';
 
@@ -75,4 +75,4 @@ function mapStateToProps(state) {
   return {home_page: state};
 }
 
-export default connect(mapStateToProps, {fetchHomeValues,filterSearchedHomeValues})(Home);
+export default connect(mapStateToProps, {fetchHomeValues})(Home);
