@@ -1,5 +1,4 @@
 import './../node_modules/bootstrap/dist/css/bootstrap.css';
-import './../node_modules/sweetalert/dist/sweetalert.css';
 import './css/css/main.css';
 
 import React from 'react';
@@ -11,6 +10,7 @@ import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import {createStore, applyMiddleware, compose} from 'redux';
 import promise from 'redux-promise';
 import reducers from './reducers';
+import thunk from 'redux-thunk';
 
 import Home from './components/home';
 
@@ -18,7 +18,7 @@ const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducers, composeEnhancers(
-   applyMiddleware(promise)
+   applyMiddleware(promise,thunk)
 ));
 
 ReactDOM.render(
