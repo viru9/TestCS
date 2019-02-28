@@ -23,10 +23,11 @@ class Home extends Component {
 
   renderUserCards(){
 
-    return _.map(this.state.card_data, data => {
+    return _.map(this.state.card_data, function(data, index) {
       return (
         <ModalCards
-        key={data.NAME}
+        key={index}
+        number={index+1}
         name={data.NAME}
         location={data.LOCATION}
         dob={data.DOB}

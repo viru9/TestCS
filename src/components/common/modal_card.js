@@ -7,8 +7,7 @@ const CardModel = (props) => {
     <div className="col-6 col-md-4 user-card">
       <div className="card" style={{"width": "22rem"}}>
 
-
-     <div className="card-header">
+     <div className={(props.number%3 === 1 || props.number%3 === 0)  ? "card-header card-header-pink" : "card-header card-header-blue"}>
       <div className="row">
         <div className="col-6 col-md-6">
         <img className="card-img-top" src={props.photo} alt="Card image cap"/>
@@ -33,7 +32,6 @@ const CardModel = (props) => {
       <label className="card-phone-email"><i className="fas fa-envelope"/>&nbsp;{props.email}</label>
       </div>
       </div>
-
 
       </div>
     </div>
