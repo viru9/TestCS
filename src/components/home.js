@@ -59,9 +59,22 @@ class Home extends Component {
     return (
       <div className="container">
 
-      <input type="text"
-                onChange={this.updateSearch.bind(this)}
+      <div className="row">
+      <div className="col-6 col-md-6">
+      <label className="title-name">Rails and React II: A real use case</label>
+      </div>
+      </div>
+
+      <div className="row">
+      <div className="col-6 col-md-12">
+      <input
+      type="text"
+      onChange={this.updateSearch.bind(this)}
+      placeholder="Search people..."
+      className="search-input"
               />
+      </div>
+      </div>
 
       <div className="row">
         {this.renderUserCards()}
